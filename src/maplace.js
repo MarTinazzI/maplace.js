@@ -529,6 +529,39 @@
         this.o['on' + typeName + 'Changed'](index, obj, this[typeName].getPath().getArray());
     };
 
+    //heatmap vasializantion control
+    Maplace.prototype.heatmapCreate = function (points) {
+        if(Array.isArray(points)) {
+            points = points.map(function(v){
+                return new google.maps.LatLng(v[0], v[1]);
+            })
+            this.heatmap = new google.maps.visualization.HeatmapLayer({
+                data: points,
+                map: this.oMap
+            });
+        }
+    };
+
+    //toggle heatmap layer on/off
+    Maplace.prototype.toggleHeatmap = function() {
+        this.heatmap.setMap(this.heatmap.getMap() ? null : this.oMap);
+    },
+
+    //change gradient layer size
+    Maplace.prototype.changeGradient = function(gradient) {
+        this.heatmap.set('gradient', !gradient ? null : gradient);
+    },
+
+    //change heatmap layer radius
+    Maplace.prototype.changeRadius = function(size) {
+        this.heatmap.set('radius', !size ? null : size);
+    },
+
+    //change heatmap layer opacity
+    Maplace.prototype.changeOpacity = function(opacity) {
+       this.heatmap.set('opacity', !opacity ? null : opacity);
+    }
+
     //wrapper for the map types
     Maplace.prototype.create = {
 
