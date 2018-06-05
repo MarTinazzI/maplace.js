@@ -18,7 +18,6 @@
     } else {
         root.Maplace = factory(root.jQuery);
     }
-
 }(this, function($) {
     'use strict';
 
@@ -545,22 +544,32 @@
     //toggle heatmap layer on/off
     Maplace.prototype.toggleHeatmap = function() {
         this.heatmap.setMap(this.heatmap.getMap() ? null : this.oMap);
-    },
+    };
 
     //change gradient layer size
     Maplace.prototype.changeGradient = function(gradient) {
         this.heatmap.set('gradient', !gradient ? null : gradient);
-    },
+    };
 
     //change heatmap layer radius
     Maplace.prototype.changeRadius = function(size) {
         this.heatmap.set('radius', !size ? null : size);
-    },
+    };
+
+    //change heatmap layer Disspating
+    Maplace.prototype.changeDissipating = function(size) {
+        this.heatmap.set('dissipating', !size ? null : size);
+    };
+
+    //change heatmap layer maxIntensity
+    Maplace.prototype.changeMaxIntensity = function(size) {
+        this.heatmap.set('maxIntensity', !size ? null : size);
+    };
 
     //change heatmap layer opacity
     Maplace.prototype.changeOpacity = function(opacity) {
        this.heatmap.set('opacity', !opacity ? null : opacity);
-    }
+    };
 
     //wrapper for the map types
     Maplace.prototype.create = {
